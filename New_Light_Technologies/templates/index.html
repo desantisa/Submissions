@@ -1,0 +1,100 @@
+<!doctype html>
+<head>
+<title>Housing Data Estimator</title>
+    <link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.css"
+    rel="stylesheet" type="text/css">
+<link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.css"
+    rel="stylesheet" type="text/css">
+
+<link
+    href="{{ url_for('static', filename='style.css') }}"
+    rel="stylesheet" type="text/css">
+
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.js"></script>
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.js"></script>
+
+<style>
+    h1 {color:black;}
+  * {
+   box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+  }
+  #main {
+    display: flex;
+    min-height: calc(100vh - 40vh);
+  }
+  #main > article {
+    flex: 1;
+    background: White;
+  }
+  #main > nav,
+  #main > aside {
+    flex: 0 0 45vw;
+    background: White;
+  }
+  header, footer, article, aside {
+    padding: 1em;
+  }
+  header {
+    background: #add8e6 ;
+    height: 20vh ;
+  }
+  footer {
+    background: White ;
+    height: 1vh ;
+  }
+
+  table.dataframe, .dataframe th, .dataframe td {
+  border: none;
+  border-bottom: 1px solid #C8C8C8;
+  border-collapse: collapse;
+  text-align:center;
+  padding: 10px;
+  margin-bottom: 40px;
+  font-size: 1.1em;
+  }
+  th { background-color: #add8e6; }
+  tr:nth-child(odd)		{ background-color:#eee; }
+  tr:nth-child(even)	{ background-color:#fff; }
+  tr:hover            { background-color: #ffff99;}
+
+</style>
+</head>
+
+<body>
+  <header>
+    <h1 style="color:black">Housing Value Extractor</h1>
+            <form method="post" action="/">
+            <h4 style="color:black">Choose a Zipcode:
+                <input name = "zipcode">
+                <input type="submit" value="Submit" name="zipcode" />
+            </h4>
+            </form>
+  </header>
+
+  <div id="main">
+    <article>
+        <div style="align-content:center">
+            <h1>Map of the zipcode {{zipcode_val}} </h1>
+            {{ div_map | safe }}
+            {{ script_map | safe }}
+        </div>
+    </article>
+
+
+    <aside>
+      <h2>Table of Statistics </h2>
+      {{ table | safe }}
+      <h2>Historical Listing Price </h2>
+      {{ div_hist | safe }}
+      {{ script_hist | safe }}
+    </aside>
+  </div>
+
+  <footer>
+  </footer>
+</body>
