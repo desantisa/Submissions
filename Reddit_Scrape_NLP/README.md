@@ -1,4 +1,4 @@
-##He Said She Said: Discussions among Men and Women on Reddit
+#He Said She Said: Discussions among Men and Women on Reddit
 
 **Problem Statement**
 
